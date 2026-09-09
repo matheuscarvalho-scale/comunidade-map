@@ -1,0 +1,1 @@
+ALTER TABLE public.user_onboarding ADD COLUMN sales_channel_other text;

@@ -1,0 +1,1 @@
+UPDATE storage.buckets SET file_size_limit = 3221225472 WHERE id = 'formation-videos';

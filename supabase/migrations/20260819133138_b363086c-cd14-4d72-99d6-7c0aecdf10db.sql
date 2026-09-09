@@ -1,0 +1,1 @@
+ALTER VIEW public.profiles_admin SET (security_invoker = true);

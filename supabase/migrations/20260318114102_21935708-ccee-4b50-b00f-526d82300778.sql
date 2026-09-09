@@ -1,0 +1,1 @@
+UPDATE webinars SET presenter_name = NULL, presenter_avatar = NULL, presenter_bio = NULL WHERE is_active = true AND presenter_name = 'Bruno Mesquita';

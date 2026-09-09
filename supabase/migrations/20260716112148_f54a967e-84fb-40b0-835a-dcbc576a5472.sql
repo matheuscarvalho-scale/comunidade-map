@@ -1,0 +1,1 @@
+UPDATE public.mentors SET is_listed = false WHERE id = '8b6f9bfe-ac1d-4ad6-80d9-8b5a5bf9a086';

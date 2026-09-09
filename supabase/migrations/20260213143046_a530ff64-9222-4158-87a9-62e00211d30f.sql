@@ -1,0 +1,1 @@
+ALTER TABLE public.webinars ADD COLUMN presenter_avatar text;

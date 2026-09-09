@@ -1,0 +1,95 @@
+project_id = "okcrzsygpzdlayewtgis"
+
+[functions.delete-account]
+verify_jwt = true
+
+[functions.create-admin]
+verify_jwt = false
+
+[functions.fetch-rss]
+verify_jwt = false
+
+[functions.conta-azul-integration]
+verify_jwt = false
+
+[functions.send-welcome-email]
+verify_jwt = false
+
+[functions.check-subscription-expiry]
+verify_jwt = false
+
+[functions.send-webinar-email]
+verify_jwt = false
+
+[functions.process-webinar-reminders]
+verify_jwt = false
+
+[functions.process-mentoring-reminders]
+verify_jwt = false
+
+[functions.create-user]
+verify_jwt = false
+
+[functions.generate-recommendations]
+verify_jwt = false
+
+[functions.google-meet-integration]
+verify_jwt = false
+
+[functions.update-cashback-from-sheet]
+verify_jwt = false
+
+[functions.asaas-webhook]
+verify_jwt = false
+
+[functions.conta-azul-oauth-callback]
+verify_jwt = false
+
+[functions.sync-partner-clicks]
+verify_jwt = false
+
+[functions.create-stream-upload]
+verify_jwt = false
+
+[functions.cloudflare-video-status]
+verify_jwt = false
+
+[functions.create-signing-key]
+verify_jwt = false
+
+[functions.create-plan-upgrade]
+verify_jwt = false
+
+[functions.get-upgrade-quote]
+verify_jwt = false
+
+[functions.send-spreadsheet-email]
+verify_jwt = false
+
+[functions.notify-team-member]
+verify_jwt = false
+
+[functions.list-asaas-subscriptions]
+verify_jwt = false
+
+[functions.admin-reset-password]
+verify_jwt = false
+
+[functions.notify-make-daily-event]
+verify_jwt = false
+
+[functions.notify-make-new-content]
+verify_jwt = false
+
+[functions.replay-asaas-webhook]
+verify_jwt = false
+
+[functions.send-push]
+verify_jwt = false
+
+[functions.backfill-central-members]
+verify_jwt = false
+
+[functions.central-read-api]
+verify_jwt = false
+

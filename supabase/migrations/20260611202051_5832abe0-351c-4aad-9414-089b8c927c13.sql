@@ -1,0 +1,1 @@
+UPDATE public.mentoring_sessions SET title = REPLACE(title, 'Mentoria Quinzenal', 'Mentoria Semanal') WHERE title ILIKE '%Mentoria Quinzenal%';

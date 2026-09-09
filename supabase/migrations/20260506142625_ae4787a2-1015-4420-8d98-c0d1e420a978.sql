@@ -1,0 +1,1 @@
+DELETE FROM public.mentors WHERE id IN ('97f6eb80-dcd0-4af6-b7c0-d0034880ce85', 'f066b9c4-1620-4268-8fa8-29769fec5a24');

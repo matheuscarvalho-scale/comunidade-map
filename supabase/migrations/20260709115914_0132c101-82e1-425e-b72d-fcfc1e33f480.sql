@@ -1,0 +1,1 @@
+UPDATE public.profiles SET subscription_status='expired', subscription_end_date=(now() - interval '2 days'), subscription_start_date=(now() - interval '367 days') WHERE id='ea125ab3-0740-4840-b325-63e9b042ccea';

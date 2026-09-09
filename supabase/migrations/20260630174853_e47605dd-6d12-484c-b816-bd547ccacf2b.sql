@@ -1,0 +1,1 @@
+UPDATE public.profiles SET subscription_status = 'expired', subscription_end_date = now() WHERE user_id = 'ea125ab3-0740-4840-b325-63e9b042ccea'; UPDATE public.subscriptions SET status = 'canceled', updated_at = now() WHERE user_id = 'ea125ab3-0740-4840-b325-63e9b042ccea';

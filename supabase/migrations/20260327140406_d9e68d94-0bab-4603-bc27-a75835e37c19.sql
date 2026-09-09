@@ -1,0 +1,1 @@
+UPDATE formations SET presenter_name = NULL, presenter_avatar = NULL, thumbnail_url = (SELECT thumbnail_url FROM formations WHERE id = '637a12df-d300-422c-9be3-a42c4d877438') WHERE id = 'b5311db0-7d7b-43d1-921b-2675474793eb';

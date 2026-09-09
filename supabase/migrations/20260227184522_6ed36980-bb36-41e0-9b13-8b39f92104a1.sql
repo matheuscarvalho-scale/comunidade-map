@@ -1,0 +1,1 @@
+ALTER TABLE public.webhook_logs ADD COLUMN customer_name text DEFAULT NULL;

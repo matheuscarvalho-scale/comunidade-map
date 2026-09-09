@@ -1,0 +1,1 @@
+DELETE FROM cashback_usage WHERE id IN ('697413eb-2dee-414a-95fc-b94ce3a5e5fe', '77d5939b-8aed-4065-8bdf-8863cfc76464', '2a9aa287-71ed-402a-8832-328e92f16250');

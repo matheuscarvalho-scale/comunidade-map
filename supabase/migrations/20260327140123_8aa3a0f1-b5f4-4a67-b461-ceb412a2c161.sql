@@ -1,0 +1,1 @@
+UPDATE formations SET presenter_name = 'Bruno Mesquita', presenter_avatar = 'https://okcrzsygpzdlayewtgis.supabase.co/storage/v1/object/public/avatars/e4e8f871-cedd-47ab-9e14-3c52eed7d40e/1773838181787.png' WHERE id = 'b5311db0-7d7b-43d1-921b-2675474793eb';

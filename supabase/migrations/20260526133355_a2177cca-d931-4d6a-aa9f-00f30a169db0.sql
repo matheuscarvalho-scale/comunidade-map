@@ -1,0 +1,1 @@
+UPDATE public.profiles SET subscription_end_date = subscription_start_date + interval '1 year', updated_at = now() WHERE user_id = '6c97455c-373c-4ad3-a533-8f3294c1cb20';

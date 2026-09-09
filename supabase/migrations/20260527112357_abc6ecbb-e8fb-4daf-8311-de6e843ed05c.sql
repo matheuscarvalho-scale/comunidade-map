@@ -1,0 +1,1 @@
+DELETE FROM public.webinars WHERE id = 'a21bb54a-b3b5-4e01-a986-d2775b7070b3';

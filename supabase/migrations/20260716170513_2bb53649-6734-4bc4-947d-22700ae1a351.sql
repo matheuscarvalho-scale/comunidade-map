@@ -1,0 +1,2 @@
+DELETE FROM mentors WHERE id = '5656d407-c69a-413a-8f37-10fa492a6d74';
+UPDATE mentors SET avatar_url = 'https://okcrzsygpzdlayewtgis.supabase.co/storage/v1/object/public/avatars/mentors%2Fandre-santos.webp?v=3' WHERE id = '92e986c1-b225-4c09-bc46-eead6bab50e2';

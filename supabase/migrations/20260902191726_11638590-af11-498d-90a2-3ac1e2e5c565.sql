@@ -1,0 +1,1 @@
+REVOKE SELECT ON public.mentoring_sessions_public FROM anon;

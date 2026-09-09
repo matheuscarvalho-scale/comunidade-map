@@ -1,0 +1,1 @@
+UPDATE webinars SET scheduled_at = '2026-03-26T19:00:00+00:00' WHERE id = 'ff994e68-0ca8-49f3-8862-45b28c3b70fd';

@@ -1,0 +1,1 @@
+UPDATE mentors SET avatar_url = 'https://okcrzsygpzdlayewtgis.supabase.co/storage/v1/object/public/avatars/e4e8f871-cedd-47ab-9e14-3c52eed7d40e/1773838181787.png' WHERE id = 'f9fe084f-098c-4203-8c8b-6cd51c909c03'

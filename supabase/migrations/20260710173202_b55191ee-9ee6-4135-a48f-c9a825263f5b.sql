@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX IF NOT EXISTS payment_identifiers_asaas_customer_id_unique ON public.payment_identifiers (asaas_customer_id) WHERE asaas_customer_id IS NOT NULL;

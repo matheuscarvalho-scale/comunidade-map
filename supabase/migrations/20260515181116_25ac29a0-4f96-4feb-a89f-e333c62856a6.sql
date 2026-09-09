@@ -1,0 +1,1 @@
+ALTER TABLE public.user_onboarding ADD COLUMN IF NOT EXISTS company text, ADD COLUMN IF NOT EXISTS job_title text;

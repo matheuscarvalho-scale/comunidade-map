@@ -1,0 +1,17 @@
+# MAP Acelera
+
+> Ecossistema de empreendedores de e-commerce: formações, mentorias, comunidade, networking e benefícios para acelerar resultados em marketplaces.
+
+MAP Acelera é uma comunidade premium para empreendedores que vendem em marketplaces (Amazon, Mercado Livre, Shopee, etc.). Oferece trilhas de conteúdo, mentorias semanais ao vivo, webinars, certificações, parcerias com benefícios exclusivos e cashback.
+
+## Pages
+
+- [Home / Landing](/comunidade-map): Visão geral da comunidade MAP Acelera, depoimentos e benefícios.
+- [Planos](/planos): Planos de assinatura Basic, Pro e Business.
+- [Formações](/formacoes): Trilhas e cursos completos sobre e-commerce e marketplaces.
+- [Entrar](/auth): Login e criação de conta para membros.
+- [Validar Certificado](/validar-certificado): Verificação pública de autenticidade de certificados emitidos.
+
+## Optional
+
+- [Sucesso da Venda](/sucesso-venda): Página de confirmação pós-checkout.

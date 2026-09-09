@@ -1,0 +1,1 @@
+DELETE FROM secondary_login_requests WHERE secondary_email = 'desenvolvedores@mapmarketplaces.com' AND status = 'rejected';

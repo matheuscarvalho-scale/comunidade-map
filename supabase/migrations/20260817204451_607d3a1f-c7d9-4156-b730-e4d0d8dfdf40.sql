@@ -1,0 +1,2 @@
+ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS updated_by text;
+COMMENT ON COLUMN public.profiles.updated_by IS 'Ator da última alteração (ex.: centralizador:email@dominio, system, admin:uuid). Preenchido pela central-read-api e integrações.';

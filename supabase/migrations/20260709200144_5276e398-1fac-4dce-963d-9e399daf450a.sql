@@ -1,0 +1,1 @@
+UPDATE public.profiles SET seen_mentorias_migration_notice = false;

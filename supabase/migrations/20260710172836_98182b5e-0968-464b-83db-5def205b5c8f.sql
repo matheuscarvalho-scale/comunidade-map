@@ -1,0 +1,2 @@
+UPDATE public.content_items SET title = 'Backoffice e finanças - 25/06/2026' WHERE id = '6bfcde78-fa37-47da-9cff-2bdcbb9cd84d';
+UPDATE public.content_items SET title = 'Reforma tributária na prática para quem vende online - 02/07/2026' WHERE id = '0a56d5c8-0795-4267-887d-e310b42ae9a9';

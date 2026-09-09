@@ -1,0 +1,1 @@
+ALTER TABLE public.formations ADD COLUMN is_coming_soon boolean NOT NULL DEFAULT false;

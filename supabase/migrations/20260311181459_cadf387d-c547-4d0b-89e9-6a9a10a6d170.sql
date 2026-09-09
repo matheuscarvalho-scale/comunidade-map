@@ -1,0 +1,2 @@
+UPDATE formation_lessons SET duration_minutes = 5 WHERE cloudflare_video_uid = '92cace5c9b9e6996e2733bf9f7105362';
+UPDATE formation_lessons SET duration_minutes = 7 WHERE cloudflare_video_uid = '1ac762680cb06b60c83a41f853620455';

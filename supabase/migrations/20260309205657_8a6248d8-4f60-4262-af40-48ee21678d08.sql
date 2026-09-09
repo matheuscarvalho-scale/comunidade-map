@@ -1,0 +1,1 @@
+UPDATE achievements SET description = 'Fez parte da comunidade MAP desde o início!' WHERE name = 'Membro Fundador';

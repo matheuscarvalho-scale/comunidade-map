@@ -1,0 +1,1 @@
+ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS seen_mentorias_migration_notice boolean NOT NULL DEFAULT false;

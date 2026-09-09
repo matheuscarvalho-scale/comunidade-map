@@ -1,0 +1,1 @@
+UPDATE public.partners SET website_url = 'https://www.bling.com.br/planos-e-precos/map&bling', updated_at = now() WHERE id = '181cfdee-5e1b-4beb-af99-49329fb7b846';

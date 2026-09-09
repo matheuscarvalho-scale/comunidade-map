@@ -1,0 +1,1 @@
+ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS plan_locked boolean NOT NULL DEFAULT false;

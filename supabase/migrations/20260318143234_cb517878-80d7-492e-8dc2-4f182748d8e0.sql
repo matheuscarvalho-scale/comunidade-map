@@ -1,0 +1,1 @@
+UPDATE partner_clicks SET user_plan = 'basic' WHERE user_plan = 'starter';

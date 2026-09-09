@@ -1,0 +1,1 @@
+ALTER TABLE public.webinar_scarcity_config ADD COLUMN min_checkins_to_show integer NOT NULL DEFAULT 5;
