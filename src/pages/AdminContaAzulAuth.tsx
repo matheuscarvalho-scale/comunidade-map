@@ -19,7 +19,7 @@ interface ContaAzulService {
 
 
 const CONTAAZUL_CLIENT_ID = "6nnhba2ursqn3vk41sqojjq41q";
-const REDIRECT_URI = "https://okcrzsygpzdlayewtgis.supabase.co/functions/v1/conta-azul-oauth-callback";
+const REDIRECT_URI = "https://tcncngawqeudwjxgcvia.supabase.co/functions/v1/conta-azul-oauth-callback";
 const AUTH_URL = `https://auth.contaazul.com/login?redirect_uri=${encodeURIComponent(REDIRECT_URI)}&client_id=${CONTAAZUL_CLIENT_ID}&scope=openid+profile+aws.cognito.signin.user.admin&response_type=code`;
 
 export default function AdminContaAzulAuth() {

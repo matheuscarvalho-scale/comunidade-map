@@ -47,7 +47,7 @@ Deno.serve(async (req) => {
 
       const clientId = Deno.env.get("CONTAAZUL_CLIENT_ID");
       const clientSecret = Deno.env.get("CONTAAZUL_CLIENT_SECRET");
-      const redirectUri = "https://okcrzsygpzdlayewtgis.supabase.co/functions/v1/conta-azul-oauth-callback";
+      const redirectUri = "https://tcncngawqeudwjxgcvia.supabase.co/functions/v1/conta-azul-oauth-callback";
 
       // Exchange code for tokens
       const tokenResponse = await fetch(CONTAAZUL_TOKEN_URL, {

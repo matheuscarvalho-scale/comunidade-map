@@ -1,6 +1,6 @@
 # central-read-api — Métricas de Engajamento
 
-Base: `https://okcrzsygpzdlayewtgis.supabase.co/functions/v1/central-read-api`
+Base: `https://tcncngawqeudwjxgcvia.supabase.co/functions/v1/central-read-api`
 Auth: header `x-api-key: <CENTRAL_READ_API_KEY>` (sem ela → 401). Só GET.
 
 Todas as rotas de analytics respondem `{ "data": ..., "meta": { "generated_at": ISO } }`.
@@ -47,7 +47,7 @@ Notas de paridade com o painel:
 > de leitura já existente (não criar tabelas nem duplicar dados).
 >
 > **Backend**: crie uma edge function `acelera-analytics` que faz proxy autenticado para
-> `https://okcrzsygpzdlayewtgis.supabase.co/functions/v1/central-read-api/analytics/<rota>`,
+> `https://tcncngawqeudwjxgcvia.supabase.co/functions/v1/central-read-api/analytics/<rota>`,
 > repassando query params e adicionando o header `x-api-key: ACELERA_READ_API_KEY`
 > (secret no projeto). A chave nunca vai para o frontend. Só admins podem chamar a
 > function: valide o JWT e a role admin antes de repassar.

@@ -1,6 +1,6 @@
 # central-read-api — Métricas de Marketing
 
-Base: `https://okcrzsygpzdlayewtgis.supabase.co/functions/v1/central-read-api`
+Base: `https://tcncngawqeudwjxgcvia.supabase.co/functions/v1/central-read-api`
 Auth: header `x-api-key: <CENTRAL_READ_API_KEY>` (sem ela → 401). Só GET.
 Envelope: `{ "data": ..., "meta": { "generated_at": ISO } }`.
 
@@ -44,7 +44,7 @@ para a UI avisar disso. Para a aquisição por canal virar dado confiável, todo
 > leitura da Comunidade. Mantenha o filtro global de período aplicado como `?days=` (7/30/90/365/todo).
 >
 > **Backend**: edge function `acelera-marketing` que faz proxy autenticado para
-> `https://okcrzsygpzdlayewtgis.supabase.co/functions/v1/central-read-api/marketing/<rota>`,
+> `https://tcncngawqeudwjxgcvia.supabase.co/functions/v1/central-read-api/marketing/<rota>`,
 > repassando query params e adicionando `x-api-key: ACELERA_READ_API_KEY` (secret do projeto,
 > nunca no browser). Valide JWT + role admin antes de repassar. Resposta sempre `{ data, meta }`.
 >

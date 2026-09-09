@@ -1,6 +1,6 @@
 # central-read-api — Escrita (PATCH parcial)
 
-Base: `https://okcrzsygpzdlayewtgis.supabase.co/functions/v1/central-read-api`
+Base: `https://tcncngawqeudwjxgcvia.supabase.co/functions/v1/central-read-api`
 
 ## 1. Chaves e permissões
 

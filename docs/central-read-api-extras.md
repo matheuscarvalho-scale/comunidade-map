@@ -1,6 +1,6 @@
 # central-read-api — Rotas complementares (gamificação, IA, catálogo, compliance, ops)
 
-Base: `https://okcrzsygpzdlayewtgis.supabase.co/functions/v1/central-read-api`
+Base: `https://tcncngawqeudwjxgcvia.supabase.co/functions/v1/central-read-api`
 Auth: header `x-api-key: <CENTRAL_READ_API_KEY>` (sem ela → 401). Só GET.
 
 Envelope: `{ data, meta }`. Rotas paginadas aceitam `?page=` e `?per_page=` (default 100, máx 500)
