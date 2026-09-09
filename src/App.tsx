@@ -15,7 +15,6 @@ import { GoogleAnalyticsTracker } from "./components/analytics/GoogleAnalyticsTr
 import { AchievementNotificationWatcher } from "./components/conquistas/AchievementNotificationToast";
 import { AiAssistantWidget } from "./components/ai/AiAssistantWidget";
 import { HomeRoute } from "./components/HomeRoute";
-import { DONA_OLGA_EXTRA_USER_IDS } from "./lib/donaOlgaAccess";
 
 
 // Lazy-loaded pages
@@ -68,7 +67,6 @@ const PainelVendedor = React.lazy(() => import("./pages/PainelVendedor"));
 const SucessoVenda = React.lazy(() => import("./pages/SucessoVenda"));
 const AdminCashback = React.lazy(() => import("./pages/AdminCashback"));
 const MeuCashback = React.lazy(() => import("./pages/MeuCashback"));
-const AdminDonaOlga = React.lazy(() => import("./pages/AdminDonaOlga"));
 const Privacidade = React.lazy(() => import("./pages/Privacidade"));
 const Termos = React.lazy(() => import("./pages/Termos"));
 const ExcluirConta = React.lazy(() => import("./pages/ExcluirConta"));
@@ -324,17 +322,6 @@ const App = () => (
                 element={
                   <ProtectedAdminRoute>
                     <AdminWebhookLogs />
-                  </ProtectedAdminRoute>
-                }
-              />
-              <Route
-                path="/admin/dona-olga"
-                element={
-                  <ProtectedAdminRoute
-                    allowedRoles={["admin_geral", "admin"]}
-                    allowedUserIds={DONA_OLGA_EXTRA_USER_IDS}
-                  >
-                    <AdminDonaOlga />
                   </ProtectedAdminRoute>
                 }
               />

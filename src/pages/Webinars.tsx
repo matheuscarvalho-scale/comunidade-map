@@ -26,7 +26,7 @@ import { ptBR } from "date-fns/locale";
 import { WebinarCard } from "@/components/webinars/WebinarCard";
 import { WebinarFakeNotifications } from "@/components/webinars/WebinarFakeNotifications";
 import { useWebinarScarcity } from "@/hooks/useWebinarScarcity";
-import { useGoogleCalendarEvents, GoogleCalendarEvent } from "@/hooks/useGoogleCalendarEvents";
+import { GoogleCalendarEvent } from "@/hooks/useGoogleCalendarEvents";
 import { useRecordedTrackItems } from "@/hooks/useRecordedTrackItems";
 import { RecordedItemCard } from "@/components/recordings/RecordedItemCard";
 import { RecordedVideoDialog } from "@/components/recordings/RecordedVideoDialog";
@@ -62,7 +62,9 @@ export default function Webinars() {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
   const [dayModalOpen, setDayModalOpen] = useState(false);
   const { data: scarcityConfigs = {} } = useWebinarScarcity();
-  const { data: calendarEvents = [] } = useGoogleCalendarEvents();
+  // Google Calendar integration removed; kept as an empty list so the
+  // day-modal/dot-marking code below still works untouched.
+  const calendarEvents: GoogleCalendarEvent[] = [];
   const { data: recordedWebinars = [] } = useRecordedTrackItems(["webinars"]);
   const [playingItem, setPlayingItem] = useState<{ id: string; title: string; cloudflare_video_uid: string } | null>(null);
 

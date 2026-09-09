@@ -2,7 +2,7 @@ import { useState, useCallback, useMemo, useRef, useEffect } from "react";
 import { Calendar as CalendarIcon, Clock, Star, Video, CheckCircle2, Loader2, Users, User, CalendarPlus, PlayCircle, Play, Maximize2, Minimize2, X, Download } from "lucide-react";
 import { MeetingCountdown } from "@/components/countdown/MeetingCountdown";
 import { fetchMentoringMeetingUrl } from "@/lib/mentoring";
-import { generateGoogleCalendarUrl, useGoogleCalendarEvents } from "@/hooks/useGoogleCalendarEvents";
+import { generateGoogleCalendarUrl } from "@/hooks/useGoogleCalendarEvents";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -76,10 +76,6 @@ export default function Mentorias() {
 
   // Recorded mentorias (from the "Mentorias" content_track)
   const { data: recordedMentorias = [] } = useRecordedTrackItems(["mentorias"]);
-
-
-  // Fetch "mentorias quinzenais" events from Google Calendar to get Meet links
-  const { data: calendarEvents = [] } = useGoogleCalendarEvents("mentorias quinzenais");
 
 
   // Fetch mentoring sessions from database

@@ -33,9 +33,6 @@ verify_jwt = false
 [functions.generate-recommendations]
 verify_jwt = false
 
-[functions.google-meet-integration]
-verify_jwt = false
-
 [functions.update-cashback-from-sheet]
 verify_jwt = false
 

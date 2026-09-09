@@ -25,7 +25,6 @@ import {
   TrendingUp,
   Presentation,
   Webhook,
-  MessageSquare,
   CreditCard,
   GraduationCap,
   Lightbulb,
@@ -38,7 +37,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { useTheme } from "@/components/theme-provider";
 import { useAuth } from "@/contexts/AuthContext";
-import { hasDonaOlgaExtraAccess } from "@/lib/donaOlgaAccess";
 import { useToast } from "@/hooks/use-toast";
 import { useProfile } from "@/hooks/useProfile";
 import { usePermission } from "@/hooks/usePermission";
@@ -378,23 +376,6 @@ export function AppSidebar() {
                       Analytics de Engajamento
                     </Link>
                   )}
-
-                  {(hasRole(['admin', 'admin_geral']) || hasDonaOlgaExtraAccess(user?.id)) && (
-                    <Link
-                      to="/admin/dona-olga"
-                      onClick={() => setIsMobileOpen(false)}
-                      className={cn(
-                        "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200",
-                        location.pathname === "/admin/dona-olga"
-                          ? "bg-primary text-primary-foreground"
-                          : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                      )}
-                    >
-                      <MessageSquare className="h-5 w-5" />
-                      Mapinha
-                    </Link>
-                  )}
-
 
                 </>
               );

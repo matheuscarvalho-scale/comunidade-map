@@ -60,7 +60,7 @@ import {
 import { MentorSearch } from "@/components/admin/MentorSearch";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { PresenterProfileSearch } from "@/components/admin/PresenterProfileSearch";
-import { useGoogleCalendarEvents } from "@/hooks/useGoogleCalendarEvents";
+import type { GoogleCalendarEvent } from "@/hooks/useGoogleCalendarEvents";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { usePermission } from "@/hooks/usePermission";
@@ -168,8 +168,6 @@ export default function AdminWebinars() {
   const queryClient = useQueryClient();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const avatarInputRef = useRef<HTMLInputElement>(null);
-  const [generatingMeetWebinar, setGeneratingMeetWebinar] = useState(false);
-  const [generatingMeetMent, setGeneratingMeetMent] = useState(false);
 
   const [activeTab, setActiveTab] = useState("webinars");
 
@@ -215,8 +213,8 @@ export default function AdminWebinars() {
   const [mentCheckinDialogOpen, setMentCheckinDialogOpen] = useState(false);
   const [managingMentoring, setManagingMentoring] = useState<MentoringSession | null>(null);
 
-  // Fetch Google Calendar events for Meet link matching (must be before early return)
-  const { data: calendarEvents = [] } = useGoogleCalendarEvents("mentorias quinzenais");
+  // Google Calendar integration removed; kept empty so calendarMeetLinks below still works untouched.
+  const calendarEvents: GoogleCalendarEvent[] = [];
 
 
   // Permission check
@@ -448,36 +446,13 @@ export default function AdminWebinars() {
   // ═══════════════════ WEBINAR MUTATIONS ═══════════════════
   const saveMutation = useMutation({
     mutationFn: async (data: { form: WebinarForm; id?: string }) => {
-      // Auto-generate Google Meet link if not provided
-      let meetingUrl = data.form.meeting_url.trim() || null;
-      if (!meetingUrl && data.form.scheduled_at) {
-        try {
-          const { data: meetData, error: meetError } = await supabase.functions.invoke("google-meet-integration", {
-            body: {
-              title: data.form.title.trim(),
-              description: data.form.description.trim() || "",
-              scheduled_at: new Date(data.form.scheduled_at).toISOString(),
-              duration_minutes: data.form.duration_minutes,
-              request_id: `webinar-${data.id || Date.now()}`,
-            },
-          });
-          if (!meetError && meetData?.success) {
-            meetingUrl = meetData.meeting_url;
-          } else {
-            console.warn("Failed to auto-generate Meet link:", meetData?.error || meetError);
-          }
-        } catch (e) {
-          console.warn("Google Meet auto-generation failed:", e);
-        }
-      }
-
       const payload = {
         title: data.form.title.trim(),
         description: data.form.description.trim() || null,
         partner_name: data.form.partner_name.trim() || null,
         scheduled_at: data.form.scheduled_at ? new Date(data.form.scheduled_at).toISOString() : data.form.scheduled_at,
         duration_minutes: data.form.duration_minutes,
-        meeting_url: meetingUrl,
+        meeting_url: data.form.meeting_url.trim() || null,
         max_attendees: data.form.max_attendees ? parseInt(data.form.max_attendees) : null,
         is_active: data.form.is_active,
         thumbnail_url: data.form.thumbnail_url || null,
@@ -527,30 +502,7 @@ export default function AdminWebinars() {
   const saveMentMutation = useMutation({
     mutationFn: async (data: { form: MentoringForm; id?: string; applyToAll?: boolean }) => {
       const isIndividual = data.form.session_type === "individual";
-
-      // Auto-generate Google Meet link if not provided
-      let meetingUrl = data.form.meeting_url.trim() || null;
-      if (!meetingUrl && data.form.scheduled_at) {
-        try {
-          const { data: meetData, error: meetError } = await supabase.functions.invoke("google-meet-integration", {
-            body: {
-              title: data.form.title.trim(),
-              description: data.form.description.trim() || "",
-              scheduled_at: new Date(data.form.scheduled_at).toISOString(),
-              duration_minutes: data.form.duration_minutes,
-              request_id: `mentoring-${data.id || Date.now()}`,
-              cohost_email: data.form.mentor_email.trim() || undefined,
-            },
-          });
-          if (!meetError && meetData?.success) {
-            meetingUrl = meetData.meeting_url;
-          } else {
-            console.warn("Failed to auto-generate Meet link:", meetData?.error || meetError);
-          }
-        } catch (e) {
-          console.warn("Google Meet auto-generation failed:", e);
-        }
-      }
+      const meetingUrl = data.form.meeting_url.trim() || null;
 
       const payload = {
         title: data.form.title.trim(),
@@ -724,64 +676,6 @@ export default function AdminWebinars() {
       return;
     }
     saveMutation.mutate({ form, id: editingWebinar?.id });
-  };
-
-  // ═══════════════════ GOOGLE MEET GENERATORS ═══════════════════
-  const generateGoogleMeetForWebinar = async () => {
-    if (!form.title || !form.scheduled_at) {
-      toast({ title: "Preencha o título e a data antes de gerar o link.", variant: "destructive" });
-      return;
-    }
-    setGeneratingMeetWebinar(true);
-    try {
-      const { data, error } = await supabase.functions.invoke("google-meet-integration", {
-        body: {
-          title: form.title,
-          description: form.description || "",
-          scheduled_at: new Date(form.scheduled_at).toISOString(),
-          duration_minutes: form.duration_minutes,
-          request_id: `webinar-${editingWebinar?.id || Date.now()}`,
-        },
-      });
-      if (error) throw error;
-      if (!data?.success) throw new Error(data?.error || "Erro ao gerar link");
-      setForm((p) => ({ ...p, meeting_url: data.meeting_url }));
-      toast({ title: "Link do Google Meet gerado! ✅", description: data.meeting_url });
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : "Tente novamente mais tarde.";
-      toast({ title: "Erro ao gerar Google Meet", description: message, variant: "destructive" });
-    } finally {
-      setGeneratingMeetWebinar(false);
-    }
-  };
-
-  const generateGoogleMeetForMentoring = async () => {
-    if (!mentForm.title || !mentForm.scheduled_at) {
-      toast({ title: "Preencha o título e a data antes de gerar o link.", variant: "destructive" });
-      return;
-    }
-    setGeneratingMeetMent(true);
-    try {
-      const { data, error } = await supabase.functions.invoke("google-meet-integration", {
-        body: {
-          title: mentForm.title,
-          description: mentForm.description || "",
-          scheduled_at: new Date(mentForm.scheduled_at).toISOString(),
-          duration_minutes: mentForm.duration_minutes,
-          request_id: `mentoring-${editingMent?.id || Date.now()}`,
-          cohost_email: mentForm.mentor_email.trim() || undefined,
-        },
-      });
-      if (error) throw error;
-      if (!data?.success) throw new Error(data?.error || "Erro ao gerar link");
-      setMentForm((p) => ({ ...p, meeting_url: data.meeting_url }));
-      toast({ title: "Link do Google Meet gerado! ✅", description: data.meeting_url });
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : "Tente novamente mais tarde.";
-      toast({ title: "Erro ao gerar Google Meet", description: message, variant: "destructive" });
-    } finally {
-      setGeneratingMeetMent(false);
-    }
   };
 
   // ═══════════════════ MENTORING HANDLERS ═══════════════════
@@ -1139,13 +1033,7 @@ export default function AdminWebinars() {
             </div>
             <div>
               <Label htmlFor="meeting_url">URL da Reunião</Label>
-              <div className="flex gap-2 mt-1">
-                <Input id="meeting_url" value={form.meeting_url} onChange={(e) => setForm((p) => ({ ...p, meeting_url: e.target.value }))} placeholder="https://meet.google.com/..." className="flex-1" />
-                <Button type="button" variant="outline" size="sm" onClick={generateGoogleMeetForWebinar} disabled={generatingMeetWebinar || !form.title || !form.scheduled_at} className="gap-1.5 whitespace-nowrap">
-                  {generatingMeetWebinar ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Video className="h-3.5 w-3.5 text-primary" />}
-                  {generatingMeetWebinar ? "Gerando..." : "Gerar Meet"}
-                </Button>
-              </div>
+              <Input id="meeting_url" value={form.meeting_url} onChange={(e) => setForm((p) => ({ ...p, meeting_url: e.target.value }))} placeholder="https://meet.google.com/..." className="mt-1" />
             </div>
             <div><Label htmlFor="max_attendees">Máximo de Participantes</Label><Input id="max_attendees" type="number" min={1} value={form.max_attendees} onChange={(e) => setForm((p) => ({ ...p, max_attendees: e.target.value }))} placeholder="Deixe vazio para sem limite" /></div>
             {/* Presenter */}
@@ -1226,13 +1114,7 @@ export default function AdminWebinars() {
             </div>
             <div>
               <Label>URL da Reunião</Label>
-              <div className="flex gap-2 mt-1">
-                <Input value={mentForm.meeting_url} onChange={(e) => setMentForm((p) => ({ ...p, meeting_url: e.target.value }))} placeholder="https://meet.google.com/..." className="flex-1" />
-                <Button type="button" variant="outline" size="sm" onClick={generateGoogleMeetForMentoring} disabled={generatingMeetMent || !mentForm.title || !mentForm.scheduled_at} className="gap-1.5 whitespace-nowrap">
-                  {generatingMeetMent ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Video className="h-3.5 w-3.5 text-primary" />}
-                  {generatingMeetMent ? "Gerando..." : "Gerar Meet"}
-                </Button>
-              </div>
+              <Input value={mentForm.meeting_url} onChange={(e) => setMentForm((p) => ({ ...p, meeting_url: e.target.value }))} placeholder="https://meet.google.com/..." className="mt-1" />
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>

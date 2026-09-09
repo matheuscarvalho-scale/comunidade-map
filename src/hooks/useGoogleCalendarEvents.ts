@@ -1,6 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
-
+// Google Calendar event lookup (fetch-calendar-events) was removed along with the
+// Google integration; this type is kept because several pages still type their
+// (now always-empty) local event lists against it.
 export interface GoogleCalendarEvent {
   id: string;
   title: string;
@@ -11,27 +11,6 @@ export interface GoogleCalendarEvent {
   htmlLink: string | null;
   meetLink: string | null;
   updated: string | null;
-}
-
-export function useGoogleCalendarEvents(searchQuery?: string) {
-  return useQuery({
-    queryKey: ["google-calendar-events", searchQuery || "all"],
-    queryFn: async () => {
-      const body: Record<string, unknown> = {};
-      if (searchQuery) {
-        body.q = searchQuery;
-        body.filterSource = false;
-      }
-      const { data, error } = await supabase.functions.invoke("fetch-calendar-events", {
-        body,
-      });
-      if (error) throw error;
-      if (!data?.success) throw new Error(data?.error || "Erro ao buscar eventos");
-      return data.events as GoogleCalendarEvent[];
-    },
-    staleTime: 5 * 60 * 1000,
-    retry: 1,
-  });
 }
 
 // Generate a Google Calendar "Add Event" URL
