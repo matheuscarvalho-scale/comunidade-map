@@ -217,7 +217,7 @@ serve(async (req) => {
     const sealTextColor = '#000000';
 
     // New MAP logo URL (lowercase "map" with green pin "a")
-    const logoUrl = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663348192924/FysRjiCOPkbXTSzg.png';
+    const logoUrl = 'https://acelera.mapeducacao.com/images/logo-map-email.png';
 
     const certificateSVG = `
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 850" width="100%" style="max-width:1200px; display:block; margin:0 auto">
