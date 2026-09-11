@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Sparkles, ArrowRight, PlayCircle } from "lucide-react";
-import mentoriasTabAsset from "@/assets/mentorias-gravadas-tab.png.asset.json";
+const mentoriasTabAsset = { url: "/images/mentorias-gravadas-tab.png" };
 
 interface Props {
   open: boolean;
